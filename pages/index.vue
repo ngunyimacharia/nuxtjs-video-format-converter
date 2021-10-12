@@ -79,7 +79,15 @@
                     border border-gray-300
                     rounded-md
                   "
-                ></select>
+                >
+                  <option
+                    v-for="format in formats"
+                    :key="format.value"
+                    :value="format.value"
+                  >
+                    {{ format.text }}
+                  </option>
+                </select>
               </div>
             </div>
           </div>
@@ -89,7 +97,7 @@
       <div class="pt-5">
         <div class="flex justify-end">
           <button
-            type="button"
+            type="reset"
             class="
               bg-white
               py-2
@@ -105,7 +113,7 @@
               focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
             "
           >
-            Cancel
+            Reset
           </button>
           <button
             type="submit"
@@ -136,5 +144,23 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      formats: [
+        { text: "FLV (Flash Video)", value: "flv" },
+        { text: "HLS adaptive streaming", value: "m3u8" },
+        { text: "MPEG-2 Transport Stream (ts)", value: "ts" },
+        { text: "MPEG-2 Transport Stream (m2ts)", value: "m2ts" },
+        { text: "MPEG-2 Transport Stream (mts)", value: "mts" },
+        { text: "MOV", value: "mov" },
+        { text: "MKV (Matroska Multimedia Container)", value: "mkv" },
+        { text: "MP4", value: "mp4" },
+        { text: "MPEG-DASH adaptive streaming	", value: "mpd" },
+        { text: "OGV (Ogg Video)", value: "ogv" },
+        { text: "WebM", value: "webm" },
+      ],
+    };
+  },
+};
 </script>
